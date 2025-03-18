@@ -9,7 +9,7 @@
 
   <properties>
     <scala.version>2.12</scala.version>
-    <scala.compiler>2.12.12</scala.compiler>
+    <scala.compiler>2.12.19</scala.compiler>
     <lift.version>3.5.0</lift.version>
     <http4s.version>0.23.30</http4s.version>
     <!-- Common plugin settings -->
@@ -26,6 +26,24 @@
 
 
   <dependencies>
+<!--    <dependency>-->
+<!--      <groupId>com.tesobe</groupId>-->
+<!--      <artifactId>obp-commons</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>com.example</groupId>-->
+<!--      <artifactId>obp-commons</artifactId>-->
+<!--      <version>1.10.1</version>-->
+<!--      <scope>system</scope>-->
+<!--      <systemPath>${project.basedir}/libs/obp-commons-1.10.1.jar</systemPath>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>com.example</groupId>-->
+<!--      <artifactId>obp-api</artifactId>-->
+<!--      <version>1.10.1</version>-->
+<!--      <scope>system</scope>-->
+<!--      <systemPath>${project.basedir}/libs/obp-api.jar</systemPath>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.http4s</groupId>
       <artifactId>http4s-ember-server_${scala.version}</artifactId>
@@ -45,6 +63,26 @@
 
   <build>
     <plugins>
+      <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <version>3.7.1</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>http4s.Http4sServer</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>package</phase>
+          <goals>
+            <goal>single</goal>
+          </goals>
+        </execution>
+      </executions>
+      </plugin>
       <plugin>
         <groupId>net.alchim31.maven</groupId>
         <artifactId>scala-maven-plugin</artifactId>

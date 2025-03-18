@@ -10,12 +10,14 @@ import org.http4s.implicits._
 import scala.language.higherKinds
 object Http4sServer extends IOApp {
 
-
   
   //  val services: Kleisli[({type λ[β$0$] = OptionT[IO, β$0$]})#λ, Request[IO], Response[IO]] = bankServices <+> helloWorldService
   val services: Kleisli[({type λ[β$0$] = OptionT[IO, β$0$]})#λ, Request[IO], Response[IO]] =  RestRoutes.helloWorldService
   val httpApp: Kleisli[IO, Request[IO], Response[IO]] = (services).orNotFound
 
+//  //Start OBP relvent objects, and settings
+//  new bootstrap.liftweb.Boot().boot
+  
   override def run(args: List[String]): IO[ExitCode] = EmberServerBuilder
     .default[IO]
     .withHost(ipv4"0.0.0.0")
