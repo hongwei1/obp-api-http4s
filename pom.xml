@@ -73,6 +73,9 @@
             <mainClass>http4s.Http4sServer</mainClass>
           </manifest>
         </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
       </configuration>
       <executions>
         <execution>
